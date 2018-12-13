@@ -335,7 +335,7 @@
         return;
     }
     if (IsNilOrNull(self.currentToken)) {
-        [TOASTVIEW showWithText: NSLocalizedString(@"当前账号未添加资产", nil)];
+        [TOASTVIEW showWithText: NSLocalizedString(@"当前 账号未添加资产", nil)];
         return;
     }
     self.transferAbi_json_to_bin_request.code = self.currentToken.contract_name;

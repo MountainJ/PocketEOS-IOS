@@ -10,7 +10,7 @@
 
 @interface WalletUtil : NSObject
 /**
- wallet password
+ wallet password    
  */
 + (BOOL)validateWalletPasswordWithSha256:(NSString *)sha256 password:(NSString *)password;
 

@@ -41,6 +41,8 @@
             _mainScrollView1.contentSize = CGSizeMake(SCREEN_WIDTH, self.createWalletView.height_sd);
         }
         
+        ///////////改造............
+        
         if (@available(iOS 11.0, *)) {
             _mainScrollView1.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {

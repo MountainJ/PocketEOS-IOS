@@ -390,7 +390,7 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
         model.account_owner_public_key = self.ownerPrivateKey.eosPublicKey;
         model.account_active_public_key = self.ownerPrivateKey.eosPublicKey;
         model.account_owner_private_key = [AESCrypt encrypt:self.ownerPrivateKey.eosPrivateKey password:self.password];
-        model.account_active_private_key = [AESCrypt encrypt:self.ownerPrivateKey.eosPrivateKey password:self.password];
+        model.account_active_private_key= [AESCrypt encrypt:self.ownerPrivateKey.eosPrivateKey password:self.password];
     }else{
         model.account_owner_public_key = self.ownerPrivateKey.eosPublicKey;
         model.account_active_public_key = self.activePrivateKey.eosPublicKey;
