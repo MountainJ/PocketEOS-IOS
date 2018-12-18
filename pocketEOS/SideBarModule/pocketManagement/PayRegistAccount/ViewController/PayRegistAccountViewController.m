@@ -197,6 +197,12 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
 }
 
 - (void)createBtnDidClick:(UIButton *)sender{
+    
+    //创建账号，，在这里创建一个账号
+    
+    
+    
+    //
     if (IsStrEmpty(self.headerView.accountNameTF.text) ) {
         [TOASTVIEW showWithText:NSLocalizedString(@"请保证输入信息的完整~", nil)];
         return;
@@ -370,6 +376,7 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
         self.payRegistAccountService.createAccountOrderRequest.userId = CURRENT_WALLET_UID;
     }
     
+    ////确定把生成的公钥传到服务器进行保存
     if (self.headerView.privateKeyBeSameModeBtn.selected == YES) {
         self.payRegistAccountService.createAccountOrderRequest.ownerKey = self.ownerPrivateKey.eosPublicKey;
         self.payRegistAccountService.createAccountOrderRequest.activeKey = self.ownerPrivateKey.eosPublicKey;

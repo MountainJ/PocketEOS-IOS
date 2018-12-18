@@ -34,9 +34,9 @@
         unsigned char result[37];
         result[0] = 0x80;
         unsigned char degist[32];
-        int len;
+        size_t len;
         char base[100];
-        memcpy(result + 1 , str, 32);
+        memcpy(result + 1 , str, 32);//0x80.....32字节
         sha256_Raw(result, 33, degist);
         sha256_Raw(degist, 32, degist);
         memcpy(result+33, degist, 4);
