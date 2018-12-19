@@ -18,6 +18,8 @@ typedef void (^RequestFailedBlock)(id DAO, NSError *error);
  */
 @property(nonatomic, strong) AFHTTPSessionManager *networkingManager;
 
+@property(nonatomic, strong) AFHTTPSessionManager *tronNetworkingManager;
+
 /**
  *  Network request timeout
  */
@@ -58,5 +60,9 @@ typedef void (^RequestFailedBlock)(id DAO, NSError *error);
  request Json 序列化 的 post 请求
  */
 - (void)postOuterDataSuccess:(RequestSuccessBlock)success failure:(RequestFailedBlock)failure;
+
+//生成账户
+- (void)postTronDataSuccess:(RequestSuccessBlock)success failure:(RequestFailedBlock)failure;
+
 
 @end

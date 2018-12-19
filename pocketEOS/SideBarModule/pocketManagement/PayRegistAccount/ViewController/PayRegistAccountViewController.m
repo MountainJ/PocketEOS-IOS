@@ -37,6 +37,17 @@ typedef NS_ENUM(NSInteger, PaymentWay) {
 
 
 
+///////test
+
+#import "Api.pbrpc.h"
+#import "Contract.pbobjc.h"
+#import "TronNetRequest.h"
+
+
+//////
+
+
+
 NSString * const AlipayDidFinishNotification = @"AlipayDidFinishNotification";
 NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotification";
 
@@ -53,6 +64,8 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
 @property(nonatomic , strong) EosPrivateKey *activePrivateKey;
 @property(nonatomic , strong) CreateAccountResourceResult *createAccountResourceResult;
 @property(nonatomic , strong) GetAccountOrderStatusRequest *getAccountOrderStatusRequest;
+@property(nonatomic, strong) TronNetRequest *tronaccountRequest;
+
 @property(nonatomic , assign) BOOL willPay;
 @property(nonatomic , copy) NSString *password;
 @end
@@ -102,6 +115,14 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
     return _getAccountRequest;
 }
 
+- (TronNetRequest *)tronaccountRequest
+{
+    if (!_tronaccountRequest) {
+        _tronaccountRequest = [[TronNetRequest alloc] init];
+    }
+    return _tronaccountRequest;
+}
+
 - (PayRegistAccountService *)payRegistAccountService{
     if (!_payRegistAccountService) {
         _payRegistAccountService = [[PayRegistAccountService alloc] init];
@@ -115,6 +136,8 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
     }
     return _getAccountOrderStatusRequest;
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -201,7 +224,7 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
     //创建账号，，在这里创建一个账号
     
     
-    
+    self.headerView.accountNameTF.text = @"ja1234512345";
     //
     if (IsStrEmpty(self.headerView.accountNameTF.text) ) {
         [TOASTVIEW showWithText:NSLocalizedString(@"请保证输入信息的完整~", nil)];
@@ -217,9 +240,79 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
         [TOASTVIEW showWithText:NSLocalizedString(@"请选择私钥模式", nil)];
         return;
     }
-    [self checkAccountExist];
-    self.willPay = YES;
+    //https://developers.tron.network/v3.0/reference#walletcreateaccount-1
+//    NSData *accountAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
+//    NSData *ownerAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
+//    self.tronaccountRequest.ownerAddress = [self hexStringFromString:self.ownerPrivateKey.eosPublicKey];
+//    self.tronaccountRequest.accountAddress = [self hexStringFromString:self.ownerPrivateKey.eosPublicKey];
+//
+    /*如何本地生成一个有效的地址*/
+    self.tronaccountRequest.ownerAddress = @"41e552f6487585c2b58bc2c9bb4492bc1f171323ds";
+    self.tronaccountRequest.accountAddress = @"41e552f6487585c2b58bc2c9bb4492bc1f171323ds";
+    //https://developers.tron.network/lang-zh-Hans/docs/tron-box-user-guide 地址生成的过程
+    [self.tronaccountRequest postTronDataSuccess:^(id DAO, id data) {
+        GetAccountResult *result = [GetAccountResult mj_objectWithKeyValues:data];
+        if (![result.code isEqualToNumber:@0]) {
+            [TOASTVIEW showWithText: result.message];
+        };
+
+    } failure:^(id DAO, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+
+    
+    //183.63.51.77
+    //https://developers.tron.network/lang-zh-Hans/docs/using-custom-testing-node#section-test-net-environment-information
+//    TWallet *service = [[TWallet alloc] initWithHost:@"183.63.51.77:50051"];
+//    AccountCreateContract *request = [[AccountCreateContract alloc] init];
+//    NSData *accountAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
+//    NSData *ownerAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
+//    request.accountAddress = accountAddress;
+//    request.ownerAddress = ownerAddress;
+//    request.type = AccountType_Normal;
+//    [service createAccountWithRequest:request handler:^(TronTransaction * _Nullable response, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"%@",error);
+//            return ;
+//        }
+//        NSLog(@"%@",response);
+//    }];
+    
+//    [service generateAddressWithRequest:[EmptyMessage new] handler:^(AddressPrKeyPairMessage * _Nullable response, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"%@",error);
+//            return ;
+//        }
+//        NSLog(@"%@",response);
+//    }];
+    
+    
+    //////////暂时注释掉
+//    [self checkAccountExist];
+//    self.willPay = YES;
 }
+
+- (NSString *)hexStringFromString:(NSString *)string{
+    NSData *myD = [string dataUsingEncoding:NSUTF8StringEncoding];
+    Byte *bytes = (Byte *)[myD bytes];
+    //下面是Byte 转换为16进制。
+    NSString *hexStr=@"";
+    for(int i=0;i<[myD length];i++)
+        
+    {
+        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
+        
+        if([newHexStr length]==1)
+            
+            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
+        
+        else
+            
+            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr];
+    }
+    return hexStr;
+}
+
 
 - (void)checkAccountExist{
     WS(weakSelf);

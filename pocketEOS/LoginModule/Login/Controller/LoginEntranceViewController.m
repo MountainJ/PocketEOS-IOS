@@ -90,8 +90,16 @@
     
     
     
-    BBLoginViewController *vc = [[BBLoginViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
+    
+    
+//    BBLoginViewController *vc = [[BBLoginViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
 }
 
 - (void)loginBtnDidClick:(UIButton *)sender{

@@ -20,6 +20,9 @@
 // java interface
 #define REQUEST_APIPATH [NSString stringWithFormat: @"/api_oc_blockchain-v1.3.0%@", [self requestUrlPath]]
 
+//创建一个账户
+#define TRON_API_CREAT_ADDRESS      @"https://api.trongrid.io/wallet/createaccount"
+
 // nakedAddress
 //#define REQUEST_APIPATH [NSString stringWithFormat: @"/v1/chain%@", [self requestUrlPath]]
 
@@ -44,6 +47,15 @@
         _networkingManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json", @"text/javascript", @"text/plain", nil];
     }
     return _networkingManager;
+}
+
+- (AFHTTPSessionManager *)tronNetworkingManager
+{
+    if(!_tronNetworkingManager){
+        _tronNetworkingManager = [[AFHTTPSessionManager alloc] init];
+        _tronNetworkingManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json", @"text/javascript", @"text/plain", nil];
+    }
+    return _tronNetworkingManager;
 }
 
 - (NSDictionary *)responseErrorCodeDictionary{
@@ -173,6 +185,47 @@
     }];
     
 }
+
+#pragma mark - test
+
+- (void)postTronDataSuccess:(RequestSuccessBlock)success failure:(RequestFailedBlock)failure{
+    //The basic configuration information build request
+//    if(![self buildRequestConfigInfo]){
+//        return;
+//    }
+    
+    //Start a Post request data interface
+    id parameters = [self parameters];
+    NSLog(@"parameters = %@", parameters);
+    WS(weakSelf);
+    self.tronNetworkingManager.requestSerializer=[AFJSONRequestSerializer serializer];
+    self.sessionDataTask = [self.tronNetworkingManager POST:TRON_API_CREAT_ADDRESS  parameters: parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if([self validateResponseData: responseObject HttpURLResponse: task.response]) {
+            if(IsNilOrNull(success)){
+                return;
+            }
+            NSLog(@"responseObject%@", responseObject);
+            success(weakSelf.tronNetworkingManager, responseObject);
+        }
+        else{
+            failure(weakSelf.tronNetworkingManager, nil);
+        }
+        //dismiss loading view
+        if(self.showActivityIndicator){
+            [SVProgressHUD dismiss];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //dismiss loading view
+        [SVProgressHUD dismiss];
+        //failure block
+        if(IsNilOrNull(failure)){
+            return;
+        }
+        failure(task, error);
+    }];
+}
+
 
 #pragma mark The Post method request data
 - (void)postDataSuccess:(RequestSuccessBlock)success failure:(RequestFailedBlock)failure{

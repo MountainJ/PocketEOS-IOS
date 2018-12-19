@@ -17,6 +17,10 @@
 #import "RootNavigationController.h"
 #import "DiscoverMainViewController.h"
 
+#import "EZProfileController.h"
+#import "EZDappsMainController.h"
+
+
 @interface BaseTabBarController()<UITabBarControllerDelegate>
 @property (nonatomic,strong) NSMutableArray * VCS;//tabbar root VC
 @end
@@ -91,24 +95,30 @@
 -(void)setUpAllChildViewController{
     _VCS = @[].mutableCopy;
     
+    //资产首页
     AssestsMainViewController *assestsMainVC = [[AssestsMainViewController alloc] init];
-    
     [self setupChildViewController:assestsMainVC title: NSLocalizedString(@"资产", nil)imageName:@"assest_unSelect" seleceImageName:@"assest_select" BB_imageName:@"assest_unSelect_BB" BB_seleceImageName:@"assest_Select_BB"];
     
-    if (LEETHEME_CURRENTTHEME_IS_SOCAIL_MODE) {
-
-        RichListMainViewController *richListVC = [[RichListMainViewController alloc]init];
-        [self setupChildViewController:richListVC title:NSLocalizedString(@"富豪榜", nil)imageName:@"richList_unSelect" seleceImageName:@"richList_select" BB_imageName:@"" BB_seleceImageName:@""];
-
-    }
+    //Dapps首页
+    EZDappsMainController *dappsListVC = [[EZDappsMainController alloc]init];
+    [self setupChildViewController:dappsListVC title:NSLocalizedString(@"DApps", nil)imageName:@"richList_unSelect" seleceImageName:@"richList_select" BB_imageName:@"" BB_seleceImageName:@""];
     
-    
+    //新闻版块，可以复用原来的界面
     NewsMainViewController *newsVC = [[NewsMainViewController alloc] init];
     [self setupChildViewController:newsVC title:NSLocalizedString(@"新闻", nil) imageName:@"news_unSelect" seleceImageName:@"news_select" BB_imageName:@"news_unSelect_BB" BB_seleceImageName:@"news_select_BB"];
+    //我的
+    EZProfileController *mineVC = [[EZProfileController alloc]init];
+    [self setupChildViewController:mineVC title:NSLocalizedString(@"我的", nil)imageName:@"application_unSelect" seleceImageName:@"application_select" BB_imageName:@"application_unSelect_BB" BB_seleceImageName:@"application_select_BB"];
     
-
-    DiscoverMainViewController *dappVC = [[DiscoverMainViewController alloc]init];
-    [self setupChildViewController:dappVC title:NSLocalizedString(@"发现", nil)imageName:@"application_unSelect" seleceImageName:@"application_select" BB_imageName:@"application_unSelect_BB" BB_seleceImageName:@"application_select_BB"];
+    //干掉富豪榜的代码
+    //    if (LEETHEME_CURRENTTHEME_IS_SOCAIL_MODE) {
+    //        RichListMainViewController *richListVC = [[RichListMainViewController alloc]init];
+    //        [self setupChildViewController:richListVC title:NSLocalizedString(@"富豪榜", nil)imageName:@"richList_unSelect" seleceImageName:@"richList_select" BB_imageName:@"" BB_seleceImageName:@""];
+    //    }
+    
+    //发现界面干掉，换成我的页面，需要自定义做
+//    DiscoverMainViewController *dappVC = [[DiscoverMainViewController alloc]init];
+//    [self setupChildViewController:dappVC title:NSLocalizedString(@"发现", nil)imageName:@"application_unSelect" seleceImageName:@"application_select" BB_imageName:@"application_unSelect_BB" BB_seleceImageName:@"application_select_BB"];
 
     self.viewControllers = _VCS;
 }
