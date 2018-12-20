@@ -247,8 +247,11 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
 //    self.tronaccountRequest.accountAddress = [self hexStringFromString:self.ownerPrivateKey.eosPublicKey];
 //
     /*如何本地生成一个有效的地址*/
-    self.tronaccountRequest.ownerAddress = @"41e552f6487585c2b58bc2c9bb4492bc1f171323ds";
-    self.tronaccountRequest.accountAddress = @"41e552f6487585c2b58bc2c9bb4492bc1f171323ds";
+//    self.tronaccountRequest.ownerAddress = @"41e552f6487585c2b58bc2c9bb4492bc1f171323ds";
+    self.tronaccountRequest.ownerAddress = @"0x3C09f62E469bAb2cbc8e006F8780bca4721B9537";
+  self.tronaccountRequest.accountAddress = @"0x3C09f62E469bAb2cbc8e006F8780bca4721B9537";
+
+    
     //https://developers.tron.network/lang-zh-Hans/docs/tron-box-user-guide 地址生成的过程
     [self.tronaccountRequest postTronDataSuccess:^(id DAO, id data) {
         GetAccountResult *result = [GetAccountResult mj_objectWithKeyValues:data];
