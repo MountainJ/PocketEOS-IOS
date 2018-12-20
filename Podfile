@@ -8,6 +8,7 @@ target "pocketEOS" do
     pod 'gRPC-RxLibrary'
     pod '!ProtoCompiler'
     pod '!ProtoCompiler-gRPCPlugin'
+    pod 'Masonry'
 
 
 end

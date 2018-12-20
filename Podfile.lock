@@ -33,6 +33,7 @@ PODS:
     - gRPC-RxLibrary (= 1.17.0)
   - JSONRPCKit (3.0.0):
     - Result (~> 3.2.0)
+  - Masonry (1.1.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - gRPC-ProtoRPC
   - gRPC-RxLibrary
   - JSONRPCKit (from `https://github.com/bricklife/JSONRPCKit.git`)
+  - Masonry
   - Protobuf
 
 SPEC REPOS:
@@ -60,6 +62,7 @@ SPEC REPOS:
     - gRPC-Core
     - gRPC-ProtoRPC
     - gRPC-RxLibrary
+    - Masonry
     - nanopb
     - Protobuf
     - Result
@@ -82,10 +85,11 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: 94e90774dd0dc089dece93ec22384d8383988f3f
   gRPC-RxLibrary: f2873a17e8133f66d8ce972f8805aa7a518ae974
   JSONRPCKit: 35aecfdf923a8e2053cef8e46d68ed3da66296c8
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
 
-PODFILE CHECKSUM: c86fc1d8064e56e532a2ffb7c9bd116f32aa45dc
+PODFILE CHECKSUM: d38d65fad618a7d8f0bad6e49ff53e1760089bb4
 
 COCOAPODS: 1.5.3

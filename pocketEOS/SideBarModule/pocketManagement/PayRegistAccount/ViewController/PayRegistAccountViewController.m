@@ -44,12 +44,18 @@ typedef NS_ENUM(NSInteger, PaymentWay) {
 #import "TronNetRequest.h"
 
 
+
+#import <gRPC/GRPCClient/GRPCCall+Tests.h>
+
+
 //////
 
 
 
 NSString * const AlipayDidFinishNotification = @"AlipayDidFinishNotification";
 NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotification";
+
+static  NSString *fullnode = @"54.236.37.243:50051";
 
 
 @interface PayRegistAccountViewController ()<PayRegistAccountHeaderViewDelegate, LoginPasswordViewDelegate, PaymentTipViewDelegate>
@@ -144,26 +150,30 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
     [self.view addSubview:self.navView];
     [self.view addSubview:self.headerView];
 
-    [self requestResourceDetail];
+//    [self requestResourceDetail];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayDidFinish:) name:AlipayDidFinishNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatPayDidFinish:) name:WechatPayDidFinishNotification object:nil];
     
     [self createAllKeys];
+    
+    //这里初始化grpc
+    [GRPCCall useInsecureConnectionsForHost:fullnode];
+
 }
 
 
-- (void)requestResourceDetail{
-    WS(weakSelf);
-    [self.payRegistAccountService getCreateAccountResource:^(CreateAccountResourceResult *result, BOOL isSuccess) {
-        if (isSuccess) {
-            
-            [weakSelf.headerView updateViewWithResourceModel:result.data];
-            weakSelf.createAccountResourceResult = result;
-        }
-    }];
-}
+//- (void)requestResourceDetail{
+//    WS(weakSelf);
+//    [self.payRegistAccountService getCreateAccountResource:^(CreateAccountResourceResult *result, BOOL isSuccess) {
+//        if (isSuccess) {
+//
+//            [weakSelf.headerView updateViewWithResourceModel:result.data];
+//            weakSelf.createAccountResourceResult = result;
+//        }
+//    }];
+//}
 
 //PayRegistAccountHeaderViewDelegate
 - (void)privateKeyBeSameModeBtnDidClick:(UIButton *)sender{
@@ -247,49 +257,68 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
 //    self.tronaccountRequest.accountAddress = [self hexStringFromString:self.ownerPrivateKey.eosPublicKey];
 //
     /*如何本地生成一个有效的地址*/
-//    self.tronaccountRequest.ownerAddress = @"41e552f6487585c2b58bc2c9bb4492bc1f171323ds";
-    self.tronaccountRequest.ownerAddress = @"0x3C09f62E469bAb2cbc8e006F8780bca4721B9537";
-  self.tronaccountRequest.accountAddress = @"0x3C09f62E469bAb2cbc8e006F8780bca4721B9537";
-
+//    self.tronaccountRequest.ownerAddress = @"41d1e7a6bc354106cb410e65ff8b181c600ff14292";//这是一个有效的地址
+//    self.tronaccountRequest.ownerAddress = @"0x3C09f62E469bAb2cbc8e006F8780bca4721B9537";
+//    self.tronaccountRequest.accountAddress = @"0x3C09f62E469bAb2cbc8e006F8780bca4721B9537";
+//{"base58checkAddress":"TJ7vXw5BKbioXAntuTEdrMjfHy1VNqFhiB","value":"41596700de56b5a9bce6f27a7dac403723abf1c805"}
     
     //https://developers.tron.network/lang-zh-Hans/docs/tron-box-user-guide 地址生成的过程
-    [self.tronaccountRequest postTronDataSuccess:^(id DAO, id data) {
-        GetAccountResult *result = [GetAccountResult mj_objectWithKeyValues:data];
-        if (![result.code isEqualToNumber:@0]) {
-            [TOASTVIEW showWithText: result.message];
-        };
-
-    } failure:^(id DAO, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+//    [self.tronaccountRequest postTronDataSuccess:^(id DAO, id data) {
+//        GetAccountResult *result = [GetAccountResult mj_objectWithKeyValues:data];
+//        if (![result.code isEqualToNumber:@0]) {
+//            [TOASTVIEW showWithText: result.message];
+//        };
+//
+//    } failure:^(id DAO, NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
 
     
     //183.63.51.77
     //https://developers.tron.network/lang-zh-Hans/docs/using-custom-testing-node#section-test-net-environment-information
-//    TWallet *service = [[TWallet alloc] initWithHost:@"183.63.51.77:50051"];
-//    AccountCreateContract *request = [[AccountCreateContract alloc] init];
+//    TWallet *service = [[TWallet alloc] initWithHost:fullnode];
+//    TronAccount *request = [[TronAccount alloc] init];
 //    NSData *accountAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
 //    NSData *ownerAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
-//    request.accountAddress = accountAddress;
-//    request.ownerAddress = ownerAddress;
+//    request.address = accountAddress;
+//    request.accountName = [self.headerView.accountNameTF.text dataUsingEncoding:NSUTF8StringEncoding] ;
 //    request.type = AccountType_Normal;
-//    [service createAccountWithRequest:request handler:^(TronTransaction * _Nullable response, NSError * _Nullable error) {
+//    [service getAccountWithRequest:request handler:^(TronAccount * _Nullable response, NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"%@",error);
+//                return ;
+//            }
+//            NSLog(@"%@",response);
+//    }];
+    
+    /*
+     {"address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292","balance": 18220,"asset": [{"key": "TronLottery","value": 10},{"key": "TRONONE","value": 13}],"create_time": 1537449030000,"free_asset_net_usage": [{"key": "TronLottery","value": 0},{"key": "TRONONE","value": 0}],"account_resource": {},"assetV2": [{"key": "1000532","value": 10},{"key": "1001090","value": 13}],"free_asset_net_usageV2": [{"key": "1000532","value": 0},{"key": "1001090","value": 0}]}
+     */
+    NSString *existArres = @"41d1e7a6bc354106cb410e65ff8b181c600ff14292";
+    TWallet *service = [[TWallet alloc] initWithHost:fullnode];
+    NSData *accountAddress = [existArres dataUsingEncoding:NSUTF8StringEncoding];
+    //创建一个账户
+//    AccountCreateContract *request = [[AccountCreateContract alloc] init];
+//    request.accountAddress = accountAddress;
+//    request.type = AccountType_Normal;
+//    [service createAccount2WithRequest:request handler:^(TransactionExtention * _Nullable response, NSError * _Nullable error) {
 //        if (error) {
 //            NSLog(@"%@",error);
 //            return ;
 //        }
 //        NSLog(@"%@",response);
 //    }];
-    
-//    [service generateAddressWithRequest:[EmptyMessage new] handler:^(AddressPrKeyPairMessage * _Nullable response, NSError * _Nullable error) {
-//        if (error) {
-//            NSLog(@"%@",error);
-//            return ;
-//        }
-//        NSLog(@"%@",response);
-//    }];
-    
-    
+    //请求一个有效地址的账户信息
+    TronAccount *request = [[TronAccount alloc] init];
+    request.address = accountAddress;
+    [service getAccountWithRequest:request handler:^(TronAccount * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"%@",error);
+                return ;
+            }
+        NSLog(@"name:%@\naddress:%@\n",response.accountName,response.data);
+    }];
+
     //////////暂时注释掉
 //    [self checkAccountExist];
 //    self.willPay = YES;
