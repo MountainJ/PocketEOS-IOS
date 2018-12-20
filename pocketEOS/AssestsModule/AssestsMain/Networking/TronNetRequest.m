@@ -11,9 +11,25 @@
 @implementation TronNetRequest
 
 -(id)parameters{
-    return @{@"owner_address" : VALIDATE_STRING(self.ownerAddress),
-             @"account_address" : VALIDATE_STRING(self.accountAddress)
+    return @{
+             @"address" : VALIDATE_STRING(self.accountAddress)
              };
 }
 
 @end
+
+@implementation TronFreezeBalanceNetRequest
+
+-(id)parameters{
+    return @{
+             @"owner_address" : VALIDATE_STRING(self.owner_address),
+             @"resource" : VALIDATE_STRING(self.resource),
+             @"frozen_balance" : @(self.frozen_balance),
+             @"frozen_duration" : @(self.frozen_duration)
+             };
+}
+
+@end
+
+
+

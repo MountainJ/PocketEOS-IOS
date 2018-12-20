@@ -21,3 +21,12 @@
 @property(nonatomic, strong) NSArray *activePermission_keys;
 
 @end
+
+//生成钱包地址的过程
+@interface GenerateAccount : NSObject
+
+@property(nonatomic, strong) NSString *address;
+@property(nonatomic, strong) NSString *privateKey;
+@property(nonatomic, strong) NSString *hexAddress;
+
+@end

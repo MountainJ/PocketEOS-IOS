@@ -360,7 +360,7 @@
         BaseResult *result = [BaseResult mj_objectWithKeyValues:data];
         if (![result.code isEqualToNumber:@0]) {
             [TOASTVIEW showWithText:result.message];
-            [weakSelf cancleBtnDidClick:nil];
+
             return ;
         }
         NSLog(@"approve_abi_to_json_request_success: --binargs: %@",data[@"data"][@"binargs"] );

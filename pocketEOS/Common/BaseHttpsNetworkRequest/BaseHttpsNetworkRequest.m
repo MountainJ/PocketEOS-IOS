@@ -23,6 +23,9 @@
 //创建一个账户
 #define TRON_API_CREAT_ADDRESS      @"https://api.trongrid.io/wallet/createaccount"
 
+
+
+
 // nakedAddress
 //#define REQUEST_APIPATH [NSString stringWithFormat: @"/v1/chain%@", [self requestUrlPath]]
 
@@ -32,6 +35,10 @@
  *  Response error code
  */
 @property(nonatomic, strong) NSDictionary *responseErrorCodeDictionary;
+
+@property (nonatomic,copy) NSString  *requestHost;
+
+
 @end
 
 
@@ -199,7 +206,8 @@
     NSLog(@"parameters = %@", parameters);
     WS(weakSelf);
     self.tronNetworkingManager.requestSerializer=[AFJSONRequestSerializer serializer];
-    self.sessionDataTask = [self.tronNetworkingManager POST:TRON_API_CREAT_ADDRESS  parameters: parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    NSString *hostUrl = self.requestHost;
+    self.sessionDataTask = [self.tronNetworkingManager POST:hostUrl  parameters: parameters progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if([self validateResponseData: responseObject HttpURLResponse: task.response]) {
             if(IsNilOrNull(success)){
@@ -226,6 +234,26 @@
     }];
 }
 
+
+- (void)setHostType:(HostType)hostType
+{
+    _hostType = hostType;
+    switch (hostType) {
+        case HostTypeGenerateAddress:
+            self.requestHost = @"https://api.trongrid.io/wallet/generateaddress";
+            break;
+            case HostTypeGetAccountInfo:
+            self.requestHost = @"https://api.trongrid.io/wallet/getaccount";
+            break;
+            case HostTypeFreezeBalance:
+            self.requestHost = @"https://api.trongrid.io/wallet/freezebalance";
+            break;
+        default:
+            self.requestHost = @"";
+            break;
+    }
+    
+}
 
 #pragma mark The Post method request data
 - (void)postDataSuccess:(RequestSuccessBlock)success failure:(RequestFailedBlock)failure{

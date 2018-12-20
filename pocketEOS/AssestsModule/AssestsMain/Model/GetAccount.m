@@ -16,3 +16,10 @@
 
 
 @end
+
+
+@implementation GenerateAccount
+
+
+
+@end

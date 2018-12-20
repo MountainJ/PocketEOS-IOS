@@ -12,6 +12,14 @@
 typedef void (^RequestSuccessBlock)(id DAO, id data);
 typedef void (^RequestFailedBlock)(id DAO, NSError *error);
 
+
+typedef NS_ENUM(NSInteger,HostType)
+{
+      HostTypeGenerateAddress  = 1 ,
+      HostTypeGetAccountInfo,
+      HostTypeFreezeBalance
+};
+
 @interface BaseHttpsNetworkRequest : NSObject
 /**
  *  request manager(AF_3.0 new method)
@@ -19,6 +27,8 @@ typedef void (^RequestFailedBlock)(id DAO, NSError *error);
 @property(nonatomic, strong) AFHTTPSessionManager *networkingManager;
 
 @property(nonatomic, strong) AFHTTPSessionManager *tronNetworkingManager;
+
+@property (nonatomic,assign) HostType  hostType;
 
 /**
  *  Network request timeout
