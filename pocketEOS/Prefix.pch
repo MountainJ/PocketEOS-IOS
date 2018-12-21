@@ -113,5 +113,6 @@
  友盟
 **/
 #import <UMAnalytics/MobClick.h>
+#import <Masonry/Masonry.h>
 
 #endif /* PrefixHeader_pch */

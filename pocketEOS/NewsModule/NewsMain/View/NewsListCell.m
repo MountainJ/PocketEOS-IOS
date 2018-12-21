@@ -72,6 +72,7 @@
         
         [self.contentView addSubview:self.photoImg];
         self.photoImg.sd_layout.rightSpaceToView(self.contentView, MARGIN_20).centerYEqualToView(self.contentView).widthIs(80).heightEqualToWidth();
+      
 
         [self.contentView addSubview:self.titleLabel];
         self.titleLabel.sd_layout.leftSpaceToView(self.contentView, MARGIN_20).topSpaceToView(self.contentView, MARGIN_15+2).widthIs(SCREEN_WIDTH - _photoImg.width - (MARGIN_20 * 3)).heightIs(44);

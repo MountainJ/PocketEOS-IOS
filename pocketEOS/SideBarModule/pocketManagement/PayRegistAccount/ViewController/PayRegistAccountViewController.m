@@ -37,8 +37,27 @@ typedef NS_ENUM(NSInteger, PaymentWay) {
 
 
 
+///////test
+
+#import "Api.pbrpc.h"
+#import "Contract.pbobjc.h"
+#import "TronNetRequest.h"
+
+
+
+#import <gRPC/GRPCClient/GRPCCall+Tests.h>
+
+
+//////
+
+
+
 NSString * const AlipayDidFinishNotification = @"AlipayDidFinishNotification";
 NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotification";
+
+static  NSString *fullnode = @"54.236.37.243:50051";
+static  NSString *solidityNode = @"47.254.39.153:50051";
+
 
 
 @interface PayRegistAccountViewController ()<PayRegistAccountHeaderViewDelegate, LoginPasswordViewDelegate, PaymentTipViewDelegate>
@@ -53,6 +72,9 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
 @property(nonatomic , strong) EosPrivateKey *activePrivateKey;
 @property(nonatomic , strong) CreateAccountResourceResult *createAccountResourceResult;
 @property(nonatomic , strong) GetAccountOrderStatusRequest *getAccountOrderStatusRequest;
+@property(nonatomic, strong) TronNetRequest *tronaccountRequest;
+@property(nonatomic, strong) TronFreezeBalanceNetRequest *freezeRequest;
+
 @property(nonatomic , assign) BOOL willPay;
 @property(nonatomic , copy) NSString *password;
 @end
@@ -102,6 +124,14 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
     return _getAccountRequest;
 }
 
+- (TronNetRequest *)tronaccountRequest
+{
+    if (!_tronaccountRequest) {
+        _tronaccountRequest = [[TronNetRequest alloc] init];
+    }
+    return _tronaccountRequest;
+}
+
 - (PayRegistAccountService *)payRegistAccountService{
     if (!_payRegistAccountService) {
         _payRegistAccountService = [[PayRegistAccountService alloc] init];
@@ -116,31 +146,39 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
     return _getAccountOrderStatusRequest;
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.headerView];
 
-    [self requestResourceDetail];
+    self.freezeRequest = [[TronFreezeBalanceNetRequest alloc] init];
+//    [self requestResourceDetail];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayDidFinish:) name:AlipayDidFinishNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatPayDidFinish:) name:WechatPayDidFinishNotification object:nil];
     
     [self createAllKeys];
+    
+    //这里初始化grpc
+    [GRPCCall useInsecureConnectionsForHost:fullnode];
+//    [GRPCCall useInsecureConnectionsForHost:solidityNode];
+
 }
 
 
-- (void)requestResourceDetail{
-    WS(weakSelf);
-    [self.payRegistAccountService getCreateAccountResource:^(CreateAccountResourceResult *result, BOOL isSuccess) {
-        if (isSuccess) {
-            
-            [weakSelf.headerView updateViewWithResourceModel:result.data];
-            weakSelf.createAccountResourceResult = result;
-        }
-    }];
-}
+//- (void)requestResourceDetail{
+//    WS(weakSelf);
+//    [self.payRegistAccountService getCreateAccountResource:^(CreateAccountResourceResult *result, BOOL isSuccess) {
+//        if (isSuccess) {
+//
+//            [weakSelf.headerView updateViewWithResourceModel:result.data];
+//            weakSelf.createAccountResourceResult = result;
+//        }
+//    }];
+//}
 
 //PayRegistAccountHeaderViewDelegate
 - (void)privateKeyBeSameModeBtnDidClick:(UIButton *)sender{
@@ -197,6 +235,12 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
 }
 
 - (void)createBtnDidClick:(UIButton *)sender{
+    
+    //创建账号，，在这里创建一个账号
+    
+    
+    self.headerView.accountNameTF.text = @"ja1234512345";
+    //
     if (IsStrEmpty(self.headerView.accountNameTF.text) ) {
         [TOASTVIEW showWithText:NSLocalizedString(@"请保证输入信息的完整~", nil)];
         return;
@@ -211,9 +255,130 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
         [TOASTVIEW showWithText:NSLocalizedString(@"请选择私钥模式", nil)];
         return;
     }
-    [self checkAccountExist];
-    self.willPay = YES;
+    //https://developers.tron.network/v3.0/reference#walletcreateaccount-1
+    //https://developers.tron.network/lang-zh-Hans/docs/tron-box-user-guide 地址生成的过程
+//    //第一步，生成地址，和私钥，私钥保存在本地
+//    self.tronaccountRequest.hostType = HostTypeGenerateAddress;
+//    [self.tronaccountRequest postTronDataSuccess:^(id DAO, id data) {
+//        GenerateAccount *result = [GenerateAccount mj_objectWithKeyValues:data];
+//        if (result.address.length > 0) {
+//            [TOASTVIEW showWithText: result.address];
+                //生成的秘钥，采用用户的密码在本地进行加密存储
+//        };
+//
+//    } failure:^(id DAO, NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+    
+//    查询某个地址的账户信息
+//    NSString *existHexAddress = @"41d1e7a6bc354106cb410e65ff8b181c600ff14292";
+//    self.tronaccountRequest.accountAddress = existHexAddress;
+//    self.tronaccountRequest.hostType = HostTypeGetAccountInfo;
+//    [self.tronaccountRequest postTronDataSuccess:^(id DAO, id data) {
+//        GenerateAccount *result = [GenerateAccount mj_objectWithKeyValues:data];
+//        if (result.address.length > 0) {
+//        };
+//    } failure:^(id DAO, NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
+    
+ //冻结地址下的某个balance
+    NSString *existHexAddress = @"41d1e7a6bc354106cb410e65ff8b181c600ff14292";
+    self.freezeRequest.owner_address = existHexAddress;
+    self.freezeRequest.frozen_duration = 3;
+    NSInteger number = 10;//TRX冻结的数量
+    self.freezeRequest.frozen_balance = @(1000000 * number).longLongValue;
+    self.freezeRequest.resource = @"BANDWIDTH";
+    self.freezeRequest.hostType = HostTypeFreezeBalance;
+    [self.freezeRequest postTronDataSuccess:^(id DAO, id data) {
+        GenerateAccount *result = [GenerateAccount mj_objectWithKeyValues:data];
+        if (result.address.length > 0) {
+        };
+    } failure:^(id DAO, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    //发送代币，转账给别人
+    
+    //183.63.51.77
+    //https://developers.tron.network/lang-zh-Hans/docs/using-custom-testing-node#section-test-net-environment-information
+//    TWallet *service = [[TWallet alloc] initWithHost:fullnode];
+//    TronAccount *request = [[TronAccount alloc] init];
+//    NSData *accountAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
+//    NSData *ownerAddress = [self.ownerPrivateKey.eosPublicKey dataUsingEncoding:NSUTF8StringEncoding];
+//    request.address = accountAddress;
+//    request.accountName = [self.headerView.accountNameTF.text dataUsingEncoding:NSUTF8StringEncoding] ;
+//    request.type = AccountType_Normal;
+//    [service getAccountWithRequest:request handler:^(TronAccount * _Nullable response, NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"%@",error);
+//                return ;
+//            }
+//            NSLog(@"%@",response);
+//    }];
+    
+    /*
+     {"address": "41d1e7a6bc354106cb410e65ff8b181c600ff14292","balance": 18220,"asset": [{"key": "TronLottery","value": 10},{"key": "TRONONE","value": 13}],"create_time": 1537449030000,"free_asset_net_usage": [{"key": "TronLottery","value": 0},{"key": "TRONONE","value": 0}],"account_resource": {},"assetV2": [{"key": "1000532","value": 10},{"key": "1001090","value": 13}],"free_asset_net_usageV2": [{"key": "1000532","value": 0},{"key": "1001090","value": 0}]}
+     */
+    
+//    NSString *existArres = @"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0";
+//    NSString *existOwnerAddres = @"41d1e7a6bc354106cb410e65ff8b181c600ff14292";
+//    TWallet *service = [[TWallet alloc] initWithHost:fullnode];
+//    NSData *accountAddress = [existArres dataUsingEncoding:NSUTF8StringEncoding];
+//    NSData *ownerAddress = [existOwnerAddres dataUsingEncoding:NSUTF8StringEncoding];
+//
+//    //创建一个账户
+//    AccountCreateContract *request = [[AccountCreateContract alloc] init];
+//    request.accountAddress = accountAddress;
+//    request.ownerAddress = accountAddress;
+//    request.type = AccountType_Normal;
+//    [service createAccount2WithRequest:request handler:^(TransactionExtention * _Nullable response, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"%@",error);
+//            return ;
+//        }
+//        NSLog(@"%@",response);
+//    }];
+    
+    //请求一个有效地址的账户信息
+//    TWallet *service = [[TWallet alloc] initWithHost:fullnode];
+//    TronAccount *request = [[TronAccount alloc] init];
+//    NSString *existHexAddress = @"41d1e7a6bc354106cb410e65ff8b181c600ff14292";
+//    request.address = [existHexAddress dataUsingEncoding:NSUTF8StringEncoding];
+//    [service getAccountWithRequest:request handler:^(TronAccount * _Nullable response, NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"%@",error);
+//                return ;
+//            }
+//        NSLog(@"name:%@\naddress:%@\n",response.accountName,response.data);
+//    }];
+
+    //////////暂时注释掉
+//    [self checkAccountExist];
+//    self.willPay = YES;
 }
+
+- (NSString *)hexStringFromString:(NSString *)string{
+    NSData *myD = [string dataUsingEncoding:NSUTF8StringEncoding];
+    Byte *bytes = (Byte *)[myD bytes];
+    //下面是Byte 转换为16进制。
+    NSString *hexStr=@"";
+    for(int i=0;i<[myD length];i++)
+        
+    {
+        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
+        
+        if([newHexStr length]==1)
+            
+            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
+        
+        else
+            
+            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr];
+    }
+    return hexStr;
+}
+
 
 - (void)checkAccountExist{
     WS(weakSelf);
@@ -370,6 +535,7 @@ NSString * const WechatPayDidFinishNotification = @"WechatPayDidFinishNotificati
         self.payRegistAccountService.createAccountOrderRequest.userId = CURRENT_WALLET_UID;
     }
     
+    ////确定把生成的公钥传到服务器进行保存
     if (self.headerView.privateKeyBeSameModeBtn.selected == YES) {
         self.payRegistAccountService.createAccountOrderRequest.ownerKey = self.ownerPrivateKey.eosPublicKey;
         self.payRegistAccountService.createAccountOrderRequest.activeKey = self.ownerPrivateKey.eosPublicKey;

@@ -1,24 +1,95 @@
 PODS:
-  - PocketSocket (1.0.1):
-    - PocketSocket/Client (= 1.0.1)
-    - PocketSocket/Core (= 1.0.1)
-    - PocketSocket/Server (= 1.0.1)
-  - PocketSocket/Client (1.0.1):
-    - PocketSocket/Core
-  - PocketSocket/Core (1.0.1)
-  - PocketSocket/Server (1.0.1):
-    - PocketSocket/Client
+  - "!ProtoCompiler (3.6.0)":
+    - Protobuf (~> 3.0)
+  - "!ProtoCompiler-gRPCPlugin (1.17.0)":
+    - "!ProtoCompiler (= 3.6.0)"
+    - gRPC-ProtoRPC (= 1.17.0)
+  - BoringSSL-GRPC (0.0.2):
+    - BoringSSL-GRPC/Implementation (= 0.0.2)
+    - BoringSSL-GRPC/Interface (= 0.0.2)
+  - BoringSSL-GRPC/Implementation (0.0.2):
+    - BoringSSL-GRPC/Interface (= 0.0.2)
+  - BoringSSL-GRPC/Interface (0.0.2)
+  - gRPC (1.17.0):
+    - gRPC-RxLibrary (= 1.17.0)
+    - gRPC/Main (= 1.17.0)
+  - gRPC-Core (1.17.0):
+    - gRPC-Core/Implementation (= 1.17.0)
+    - gRPC-Core/Interface (= 1.17.0)
+  - gRPC-Core/Implementation (1.17.0):
+    - BoringSSL-GRPC (= 0.0.2)
+    - gRPC-Core/Interface (= 1.17.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.17.0)
+  - gRPC-ProtoRPC (1.17.0):
+    - gRPC-ProtoRPC/Main (= 1.17.0)
+  - gRPC-ProtoRPC/Main (1.17.0):
+    - gRPC (= 1.17.0)
+    - gRPC-RxLibrary (= 1.17.0)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.17.0)
+  - gRPC/Main (1.17.0):
+    - gRPC-Core (= 1.17.0)
+    - gRPC-RxLibrary (= 1.17.0)
+  - JSONRPCKit (3.0.0):
+    - Result (~> 3.2.0)
+  - Masonry (1.1.0)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - Protobuf (3.6.1)
+  - Result (3.2.4)
 
 DEPENDENCIES:
-  - PocketSocket (~> 1.0.1)
+  - "!ProtoCompiler"
+  - "!ProtoCompiler-gRPCPlugin"
+  - gRPC
+  - gRPC-Core
+  - gRPC-ProtoRPC
+  - gRPC-RxLibrary
+  - JSONRPCKit (from `https://github.com/bricklife/JSONRPCKit.git`)
+  - Masonry
+  - Protobuf
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - PocketSocket
+  https://github.com/cocoapods/specs.git:
+    - "!ProtoCompiler"
+    - "!ProtoCompiler-gRPCPlugin"
+    - BoringSSL-GRPC
+    - gRPC
+    - gRPC-Core
+    - gRPC-ProtoRPC
+    - gRPC-RxLibrary
+    - Masonry
+    - nanopb
+    - Protobuf
+    - Result
+
+EXTERNAL SOURCES:
+  JSONRPCKit:
+    :git: https://github.com/bricklife/JSONRPCKit.git
+
+CHECKOUT OPTIONS:
+  JSONRPCKit:
+    :commit: e1ae67de59067ebb677ad0024b3dc6789f31f193
+    :git: https://github.com/bricklife/JSONRPCKit.git
 
 SPEC CHECKSUMS:
-  PocketSocket: 9c6867d66fb4f962af96b9b07f4b45bb561b2c2a
+  "!ProtoCompiler": c9526df99fafd398a393def617ae18d3774b7232
+  "!ProtoCompiler-gRPCPlugin": ab86fdc8d28652a5f19d775674c9b7a0900071f4
+  BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
+  gRPC: 72b71666056dcb12235b5238f0ff5948fd60321a
+  gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
+  gRPC-ProtoRPC: 94e90774dd0dc089dece93ec22384d8383988f3f
+  gRPC-RxLibrary: f2873a17e8133f66d8ce972f8805aa7a518ae974
+  JSONRPCKit: 35aecfdf923a8e2053cef8e46d68ed3da66296c8
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
 
-PODFILE CHECKSUM: 4a97b322390291daebabedf4617a1b72f8d79017
+PODFILE CHECKSUM: d38d65fad618a7d8f0bad6e49ff53e1760089bb4
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

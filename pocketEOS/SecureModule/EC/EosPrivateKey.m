@@ -20,23 +20,66 @@
 
 @implementation EosPrivateKey
 
+//- (instancetype)initEosPrivateKey
+//{
+//    self = [super init];
+//    if (self) {
+//        unsigned char str[32+1];
+//        for (int i = 0; i < 32; i += 2)
+//        {
+//            sprintf(&str[i], "%02X", arc4random() % 255);
+//        }
+//
+//        //将私钥编码成wif格式
+//        unsigned char result[37];
+//        result[0] = 0x80;
+//        unsigned char degist[32];
+//        size_t len;
+//        char base[100];
+//        memcpy(result + 1 , str, 32);//0x80.....32字节
+//        sha256_Raw(result, 33, degist);
+//        sha256_Raw(degist, 32, degist);
+//        memcpy(result+33, degist, 4);
+//        b58enc(base, &len, result,37);
+//        self.eosPrivateKey = [NSString stringWithUTF8String:base];
+//
+//        uint8_t pub[64];
+//        uint8_t cpub[33];
+//        char *hash;
+//        // 生成公钥
+//        uECC_compute_public_key(str,pub);
+//        //
+//        //        printf("uECC_compute_public_key:\n");
+//        //        [NSObject out_Hex:pub andLength:64];
+//
+//        //编码公钥
+//        uECC_compress(pub,cpub);
+//        hash = RMD(cpub, 33);
+//        memcpy(result, cpub, 33);
+//        memcpy(result+33, hash, 4);
+//        b58enc(base, &len, result,37);
+//        self.eosPublicKey = [NSString stringWithFormat:@"EOS%@", [NSString stringWithUTF8String:base]];
+//    }
+//    return self;
+//}
+
 - (instancetype)initEosPrivateKey
 {
     self = [super init];
     if (self) {
-        unsigned char str[32+1];
+         char str[32+1];
         for (int i = 0; i < 32; i += 2)
         {
             sprintf(&str[i], "%02X", arc4random() % 255);
         }
-        
+        //41d1e7a6bc354106cb410e65ff8b181c600ff14292//21个字节
         //将私钥编码成wif格式
         unsigned char result[37];
-        result[0] = 0x80;
+        result[0] = 0x41;
         unsigned char degist[32];
-        int len;
+        size_t len;
         char base[100];
-        memcpy(result + 1 , str, 32);
+        memcpy(result + 1 , str, 32);//0x41.....32字节
         sha256_Raw(result, 33, degist);
         sha256_Raw(degist, 32, degist);
         memcpy(result+33, degist, 4);
@@ -58,9 +101,13 @@
         memcpy(result, cpub, 33);
         memcpy(result+33, hash, 4);
         b58enc(base, &len, result,37);
-        self.eosPublicKey = [NSString stringWithFormat:@"EOS%@", [NSString stringWithUTF8String:base]];
+        self.eosPublicKey = [NSString stringWithFormat:@"%@", [NSString stringWithUTF8String:base]];
     }
     return self;
 }
+
+
+
+
 
 @end

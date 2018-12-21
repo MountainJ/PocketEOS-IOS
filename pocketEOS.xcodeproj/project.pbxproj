@@ -1313,6 +1313,18 @@
 		24FB2CAE20DBF99700AC73A5 /* BandwidthManageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FB2CAC20DBF99700AC73A5 /* BandwidthManageTableViewCell.m */; };
 		24FB2CB220DBF9CE00AC73A5 /* BandwidthManageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FB2CB120DBF9CE00AC73A5 /* BandwidthManageCellModel.m */; };
 		913F529E95F17E3A43092DAE /* libPods-pocketEOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B5C5F1FD55B2E025CB8582 /* libPods-pocketEOS.a */; };
+		A05DC03B21C9F06E0041E36B /* EZProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05DC03A21C9F06E0041E36B /* EZProfileController.m */; };
+		A05DC03E21C9F2770041E36B /* EZDappsMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05DC03D21C9F2770041E36B /* EZDappsMainController.m */; };
+		A0B4DFFE21C918B20087E4AA /* TronInventoryItems.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFED21C918B10087E4AA /* TronInventoryItems.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4DFFF21C918B20087E4AA /* Discover.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFEE21C918B10087E4AA /* Discover.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00021C918B20087E4AA /* Tron.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFEF21C918B10087E4AA /* Tron.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00121C918B20087E4AA /* Contract.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFF021C918B10087E4AA /* Contract.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00221C918B20087E4AA /* Api.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFF221C918B10087E4AA /* Api.pbrpc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00321C918B20087E4AA /* HTTP.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFF721C918B10087E4AA /* HTTP.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00421C918B20087E4AA /* Annotations.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFF821C918B10087E4AA /* Annotations.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00521C918B20087E4AA /* Descriptor.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFFB21C918B10087E4AA /* Descriptor.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00621C918B20087E4AA /* Api.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4DFFC21C918B10087E4AA /* Api.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A0B4E00921C92FDB0087E4AA /* TronNetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B4E00821C92FDB0087E4AA /* TronNetRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -3598,6 +3610,31 @@
 		24FB2CB820DBFE7200AC73A5 /* PageSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageSegmentView.m; sourceTree = "<group>"; };
 		24FB2CB920DBFE7200AC73A5 /* BodyScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BodyScrollView.h; sourceTree = "<group>"; };
 		24FB2CBA20DBFE7200AC73A5 /* UIViewAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		A01DB99421C90C8500E2BCE7 /* pocketEOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pocketEOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		A05DC03921C9F06E0041E36B /* EZProfileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZProfileController.h; sourceTree = "<group>"; };
+		A05DC03A21C9F06E0041E36B /* EZProfileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZProfileController.m; sourceTree = "<group>"; };
+		A05DC03C21C9F2770041E36B /* EZDappsMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EZDappsMainController.h; sourceTree = "<group>"; };
+		A05DC03D21C9F2770041E36B /* EZDappsMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EZDappsMainController.m; sourceTree = "<group>"; };
+		A0B4DFE821C918B10087E4AA /* Api.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFEA21C918B10087E4AA /* Discover.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Discover.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFEB21C918B10087E4AA /* Contract.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contract.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFEC21C918B10087E4AA /* Tron.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tron.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFED21C918B10087E4AA /* TronInventoryItems.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TronInventoryItems.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFEE21C918B10087E4AA /* Discover.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Discover.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFEF21C918B10087E4AA /* Tron.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tron.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFF021C918B10087E4AA /* Contract.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contract.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFF121C918B10087E4AA /* TronInventoryItems.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TronInventoryItems.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFF221C918B10087E4AA /* Api.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.pbrpc.m; sourceTree = "<group>"; };
+		A0B4DFF521C918B10087E4AA /* Annotations.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotations.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFF621C918B10087E4AA /* HTTP.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTP.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFF721C918B10087E4AA /* HTTP.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTP.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFF821C918B10087E4AA /* Annotations.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotations.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFFA21C918B10087E4AA /* Descriptor.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.pbobjc.h; sourceTree = "<group>"; };
+		A0B4DFFB21C918B10087E4AA /* Descriptor.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFFC21C918B10087E4AA /* Api.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.pbobjc.m; sourceTree = "<group>"; };
+		A0B4DFFD21C918B10087E4AA /* Api.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.pbrpc.h; sourceTree = "<group>"; };
+		A0B4E00721C92FDB0087E4AA /* TronNetRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TronNetRequest.h; sourceTree = "<group>"; };
+		A0B4E00821C92FDB0087E4AA /* TronNetRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TronNetRequest.m; sourceTree = "<group>"; };
 		AFAE409D652850E019785CE8 /* Pods-pocketEOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketEOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pocketEOS/Pods-pocketEOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D9B5C5F1FD55B2E025CB8582 /* libPods-pocketEOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pocketEOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EE9F0D161AD0B85DB36F92 /* Pods-pocketEOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pocketEOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-pocketEOS/Pods-pocketEOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -5156,10 +5193,13 @@
 			isa = PBXGroup;
 			children = (
 				1856B72420BC2039000845CB /* pocketEOS.entitlements */,
-				188DECEC20A97DA700ACD2A3 /* BLACKBOXMODE */,
 				18E72E021FCC0EBD00D09CA3 /* AssestsModule */,
 				18E72E041FCC0EBD00D09CA3 /* RichListModule */,
+				A05DC03721C9F0030041E36B /* DappsModule */,
 				18E72E031FCC0EBD00D09CA3 /* NewsModule */,
+				A05DC03321C9EF7F0041E36B /* MineModule */,
+				A01DB97321C8F55500E2BCE7 /* DigitalBussinessModule */,
+				188DECEC20A97DA700ACD2A3 /* BLACKBOXMODE */,
 				18E72E011FCC0EBD00D09CA3 /* ApplicationModule */,
 				187268321FDE315F00C898D1 /* SideBarModule */,
 				188C30341FFDDA2F00A357F3 /* LoginModule */,
@@ -8938,6 +8978,8 @@
 				18ECBCC8215B6A6100BAE3C2 /* GetTransactionByIdRequest.m */,
 				1889E196217B0C19002ECF38 /* Get_account_assetsRequest.h */,
 				1889E197217B0C19002ECF38 /* Get_account_assetsRequest.m */,
+				A0B4E00721C92FDB0087E4AA /* TronNetRequest.h */,
+				A0B4E00821C92FDB0087E4AA /* TronNetRequest.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -10072,6 +10114,122 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A01DB97321C8F55500E2BCE7 /* DigitalBussinessModule */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4DFE721C918B10087E4AA /* gRPC */,
+				A01DB99421C90C8500E2BCE7 /* pocketEOS-Bridging-Header.h */,
+			);
+			path = DigitalBussinessModule;
+			sourceTree = "<group>";
+		};
+		A05DC03321C9EF7F0041E36B /* MineModule */ = {
+			isa = PBXGroup;
+			children = (
+				A05DC03421C9EF7F0041E36B /* Controller */,
+				A05DC03521C9EF7F0041E36B /* Model */,
+				A05DC03621C9EF7F0041E36B /* View */,
+			);
+			path = MineModule;
+			sourceTree = "<group>";
+		};
+		A05DC03421C9EF7F0041E36B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A05DC03921C9F06E0041E36B /* EZProfileController.h */,
+				A05DC03A21C9F06E0041E36B /* EZProfileController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A05DC03521C9EF7F0041E36B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A05DC03621C9EF7F0041E36B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A05DC03721C9F0030041E36B /* DappsModule */ = {
+			isa = PBXGroup;
+			children = (
+				A05DC03821C9F0030041E36B /* Controller */,
+			);
+			path = DappsModule;
+			sourceTree = "<group>";
+		};
+		A05DC03821C9F0030041E36B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A05DC03C21C9F2770041E36B /* EZDappsMainController.h */,
+				A05DC03D21C9F2770041E36B /* EZDappsMainController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A0B4DFE721C918B10087E4AA /* gRPC */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4DFE821C918B10087E4AA /* Api.pbobjc.h */,
+				A0B4DFFC21C918B10087E4AA /* Api.pbobjc.m */,
+				A0B4DFFD21C918B10087E4AA /* Api.pbrpc.h */,
+				A0B4DFF221C918B10087E4AA /* Api.pbrpc.m */,
+				A0B4DFE921C918B10087E4AA /* core */,
+				A0B4DFF321C918B10087E4AA /* google */,
+			);
+			path = gRPC;
+			sourceTree = "<group>";
+		};
+		A0B4DFE921C918B10087E4AA /* core */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4DFEA21C918B10087E4AA /* Discover.pbobjc.h */,
+				A0B4DFEB21C918B10087E4AA /* Contract.pbobjc.h */,
+				A0B4DFEC21C918B10087E4AA /* Tron.pbobjc.h */,
+				A0B4DFED21C918B10087E4AA /* TronInventoryItems.pbobjc.m */,
+				A0B4DFEE21C918B10087E4AA /* Discover.pbobjc.m */,
+				A0B4DFEF21C918B10087E4AA /* Tron.pbobjc.m */,
+				A0B4DFF021C918B10087E4AA /* Contract.pbobjc.m */,
+				A0B4DFF121C918B10087E4AA /* TronInventoryItems.pbobjc.h */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		A0B4DFF321C918B10087E4AA /* google */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4DFF421C918B10087E4AA /* api */,
+				A0B4DFF921C918B10087E4AA /* protobuf */,
+			);
+			path = google;
+			sourceTree = "<group>";
+		};
+		A0B4DFF421C918B10087E4AA /* api */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4DFF521C918B10087E4AA /* Annotations.pbobjc.h */,
+				A0B4DFF621C918B10087E4AA /* HTTP.pbobjc.h */,
+				A0B4DFF721C918B10087E4AA /* HTTP.pbobjc.m */,
+				A0B4DFF821C918B10087E4AA /* Annotations.pbobjc.m */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		A0B4DFF921C918B10087E4AA /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4DFFA21C918B10087E4AA /* Descriptor.pbobjc.h */,
+				A0B4DFFB21C918B10087E4AA /* Descriptor.pbobjc.m */,
+			);
+			path = protobuf;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -10083,6 +10241,7 @@
 				183C5B781FCBEC9400DE6E88 /* Sources */,
 				183C5B791FCBEC9400DE6E88 /* Frameworks */,
 				183C5B7A1FCBEC9400DE6E88 /* Resources */,
+				98BD85D0F3172525B81C8BC8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -10135,11 +10294,13 @@
 		183C5B741FCBEC9400DE6E88 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = EZ;
 				LastUpgradeCheck = 0910;
-				ORGANIZATIONNAME = oraclechain;
+				ORGANIZATIONNAME = EZWallert;
 				TargetAttributes = {
 					183C5B7B1FCBEC9400DE6E88 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -10728,6 +10889,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		98BD85D0F3172525B81C8BC8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-pocketEOS/Pods-pocketEOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pocketEOS/Pods-pocketEOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -10795,6 +10978,7 @@
 				18AD2BDB20D13D0D00536084 /* CompleteBPVoteRequest.m in Sources */,
 				18A2F4661FF0A20A00B6CE43 /* FMTokenizers.m in Sources */,
 				18074EC92109B23600A43559 /* LoginEntranceViewController.m in Sources */,
+				A0B4E00321C918B20087E4AA /* HTTP.pbobjc.m in Sources */,
 				185DD6CF206CA80400BCFFCF /* NSObject+MJCoding.m in Sources */,
 				185DD6CD206CA80400BCFFCF /* NSObject+MJKeyValue.m in Sources */,
 				18DBBB1C206523A00050EE20 /* PGDatePickManager.m in Sources */,
@@ -10811,6 +10995,7 @@
 				1850315F20BD2253007610A2 /* DappTransferModel.m in Sources */,
 				188F7A0720CA34A000911034 /* BPRecommendAgentViewController.m in Sources */,
 				18A178A9218BDBEE00521343 /* DappListResult.m in Sources */,
+				A0B4E00621C918B20087E4AA /* Api.pbobjc.m in Sources */,
 				1853DE2720B29F2D003DC727 /* EOSMappingImportAccountViewController.m in Sources */,
 				18725DC6200C4F7900AA1889 /* WebViewJavascriptBridge_JS.m in Sources */,
 				18C622B91FD63C160043447F /* RecieveViewController.m in Sources */,
@@ -10841,6 +11026,7 @@
 				18BE612320FF2B1A00BAD50C /* RecommandTokenResult.m in Sources */,
 				18C9E8BC212168A700BC2AEA /* ExcuteMultipleActionsService.m in Sources */,
 				24FB2CA120DBF7F200AC73A5 /* BandwidthManageViewController.m in Sources */,
+				A0B4E00521C918B20087E4AA /* Descriptor.pbobjc.m in Sources */,
 				185BBA9F1FF4C82900DE2AC1 /* AccountInfo.m in Sources */,
 				1850316220BD2B87007610A2 /* DappTransferResult.m in Sources */,
 				1832F93C211D81A40089C394 /* ExcuteActionsDataSourceService.m in Sources */,
@@ -10855,6 +11041,7 @@
 				18ECBCCC215B76F500BAE3C2 /* BalanceModel.m in Sources */,
 				18017048207EF1A400E4DA07 /* NSURLProtocol+WKWebVIew.m in Sources */,
 				18EA95EF20AEB73A0032A491 /* BaseLabel.m in Sources */,
+				A0B4DFFE21C918B20087E4AA /* TronInventoryItems.pbobjc.m in Sources */,
 				180FDF86202189E600BE593F /* Assests.m in Sources */,
 				183AE2062019EB3E002041F9 /* UploadWalletAvatarImageRequest.m in Sources */,
 				182CDEBD201EBD07002B87B6 /* MessageCenter.m in Sources */,
@@ -10952,6 +11139,7 @@
 				1862E79B20DBC7E400F26629 /* TradeRamViewController.m in Sources */,
 				1806D106206E5BE10023D83B /* BindPhoneRequest.m in Sources */,
 				1832CC3820070E1C00C055B6 /* AskQuestionService.m in Sources */,
+				A0B4E00421C918B20087E4AA /* Annotations.pbobjc.m in Sources */,
 				18112F721FCD016000BEA0D9 /* IQTitleBarButtonItem.m in Sources */,
 				18DBBB13206523A00050EE20 /* PGDatePicker+Logic.m in Sources */,
 				184141B0202055BA00A789ED /* GetNewstVersionID.m in Sources */,
@@ -11019,6 +11207,7 @@
 				18017049207EF1A400E4DA07 /* HybridNSURLProtocol.m in Sources */,
 				1811306A1FCD020A00BEA0D9 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				186564EB201228D80044BBC3 /* CreateAccountService.m in Sources */,
+				A0B4E00221C918B20087E4AA /* Api.pbrpc.m in Sources */,
 				182B02F21FF39ABC006C9DFB /* AccountsTableManager.m in Sources */,
 				1813517C2025D4FE001A9B17 /* QuestionListService.m in Sources */,
 				18112F6F1FCD016000BEA0D9 /* IQTextView.m in Sources */,
@@ -11213,6 +11402,7 @@
 				18CE936521A5576F002F958E /* AssestsMainAddAccountView.m in Sources */,
 				18BCAF1820BFD8E600571577 /* BPVoteViewController.m in Sources */,
 				183348921FCE770100884107 /* CALayer+XibConfiguration.m in Sources */,
+				A0B4DFFF21C918B20087E4AA /* Discover.pbobjc.m in Sources */,
 				18ECBCBC215A28FF00BAE3C2 /* CommonDialogHasTitleView.m in Sources */,
 				188DECEB20A9737600ACD2A3 /* AnswerQuestion_abi_json_to_bin_request.m in Sources */,
 				189E3EBD201C5B980022AF19 /* CGGeometry+RSKImageCropper.m in Sources */,
@@ -11229,6 +11419,7 @@
 				18CE931C21A2B1DE002F958E /* ImportAccountWithoutAccountNameSinglePrivateKeyModeViewController.m in Sources */,
 				18112F0C1FCD00B700BEA0D9 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				180FDF8020215F3600BE593F /* WalletAccountsResult.m in Sources */,
+				A0B4E00121C918B20087E4AA /* Contract.pbobjc.m in Sources */,
 				182B8F8F20AD3A8800C43AEC /* LEETheme.m in Sources */,
 				188F7A1020CA5B0400911034 /* LanguageSettingService.m in Sources */,
 				1835775F2101CABD00F075EA /* CustomToken.m in Sources */,
@@ -11377,6 +11568,7 @@
 				181130061FCD01B800BEA0D9 /* NSImage+WebCache.m in Sources */,
 				18CEA64021022E9400B2BFE2 /* RecieveTokenModel.m in Sources */,
 				1856A4E82008887200D62FEB /* MJRefreshBackStateFooter.m in Sources */,
+				A05DC03B21C9F06E0041E36B /* EZProfileController.m in Sources */,
 				18E72E1B1FCC112300D09CA3 /* AssestsMainViewController.m in Sources */,
 				18BE5EB92186ADC9001B4610 /* RamPriceModel.m in Sources */,
 				1821084C219EB3A700897B60 /* ImportAccountWithoutAccountNameService.m in Sources */,
@@ -11403,6 +11595,7 @@
 				18D475E0215F24E700F3BF22 /* SimpleWalletLoginHeaderView.m in Sources */,
 				1812759120B69B4D005EDD91 /* CandyScoreRequest.m in Sources */,
 				1825DC652005BDEF0057320C /* QuestionListHeaderView.m in Sources */,
+				A0B4E00921C92FDB0087E4AA /* TronNetRequest.m in Sources */,
 				18A99A8B20E6616E00E32A29 /* JavascriptWebViewController.m in Sources */,
 				18BA1EF321106767008558DE /* WXApiRequestHandler.m in Sources */,
 				18FA76CC20623C6D00545E73 /* EOS_Key_Encode.m in Sources */,
@@ -11411,6 +11604,7 @@
 				1856A4EB2008887200D62FEB /* MJRefreshStateHeader.m in Sources */,
 				18DBBB1B206523A00050EE20 /* PGDatePickerView.m in Sources */,
 				182B8F8620AD1B9100C43AEC /* BaseView.m in Sources */,
+				A05DC03E21C9F2770041E36B /* EZDappsMainController.m in Sources */,
 				181130081FCD01B800BEA0D9 /* SDImageCacheConfig.m in Sources */,
 				1868178F20FD875200FEE7B5 /* AddAssestsViewController.m in Sources */,
 				180FDFCC2021B9E500BE593F /* PocketManagementService.m in Sources */,
@@ -11432,6 +11626,7 @@
 				183FF8C61FF34C80006C25F1 /* NewsResult.m in Sources */,
 				188F7A0A20CA350E00911034 /* BPRecommendAgentService.m in Sources */,
 				1860510B2028456B00C87DDF /* WkDelegateController.m in Sources */,
+				A0B4E00021C918B20087E4AA /* Tron.pbobjc.m in Sources */,
 				181130CC1FCD381800BEA0D9 /* AssestsMainHeaderView.m in Sources */,
 				186BDBD121537A7E001190A7 /* WWJRegularJudge.m in Sources */,
 				18D475BC215DD6AE00F3BF22 /* SimpleWalletLoginModel.m in Sources */,
@@ -12420,6 +12615,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -12432,7 +12628,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/pocketEOS/Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/pocketEOS/ThirdLib/PGPickerView\"";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/pocketEOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -12440,14 +12636,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/pocketEOS/SocialModule/Wechat",
 				);
-				OTHER_LDFLAGS = (
-					"-Objc",
-					"-all_load",
-					"-fobjc-arc",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.oraclechain.PocketEos.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "pocketEOS/DigitalBussinessModule/pocketEOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = arm64;
 			};
@@ -12459,6 +12654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -12471,7 +12667,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/pocketEOS/Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/pocketEOS/ThirdLib/PGPickerView\"";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/pocketEOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -12479,14 +12675,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/pocketEOS/SocialModule/Wechat",
 				);
-				OTHER_LDFLAGS = (
-					"-Objc",
-					"-all_load",
-					"-fobjc-arc",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.oraclechain.PocketEos.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "pocketEOS/DigitalBussinessModule/pocketEOS-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = arm64;
 			};

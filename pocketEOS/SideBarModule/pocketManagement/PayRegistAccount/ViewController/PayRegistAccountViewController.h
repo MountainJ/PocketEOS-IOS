@@ -4,7 +4,7 @@
 //
 //  Created by oraclechain on 2018/7/31.
 //  Copyright © 2018 oraclechain. All rights reserved.
-//
+//    创建账号的主页面！
 
 #import "BaseViewController.h"
 

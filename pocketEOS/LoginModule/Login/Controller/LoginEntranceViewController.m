@@ -21,6 +21,17 @@
 #import <SafariServices/SafariServices.h>
 #import "AddAccountViewController.h"
 
+
+///////////////test
+
+#import "WalletUtil.h"
+
+
+
+//////////
+
+
+
 @interface LoginEntranceViewController ()<LoginMainHeaderViewDelegate, SFSafariViewControllerDelegate>
 @property(nonatomic, strong) LoginService *mainService;
 @property(nonatomic , strong) LoginMainHeaderView *loginView;
@@ -54,8 +65,41 @@
 
 //LoginMainHeaderViewDelegate
 - (void)changeToBlackBoxMode{
-    BBLoginViewController *vc = [[BBLoginViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    //jaytest  创建钱包的流程处理
+    
+    //1.生成随机密码
+    // 查重该钱包名称已在您本地存在,请更换尝试~
+//    NSArray *localWalletsArr = [[WalletTableManager walletTable] selectAllLocalWallet];
+//    for (Wallet *model in localWalletsArr) {
+//        if ([model.wallet_name isEqualToString:@"jayzhang"]) {
+//            [TOASTVIEW showWithText:NSLocalizedString(@"该钱包名称已在您本地存在,请更换尝试~!", nil)];
+//            return;
+//        }
+//    }
+    // 如果本地没有钱包，进行创建
+    Wallet *model = [[Wallet alloc] init];
+    model.wallet_name = @"jayzhang";
+    model.wallet_shapwd = [WalletUtil generate_wallet_shapwd_withPassword:@"jay15018702542"];
+    model.wallet_uid = [model.wallet_name sha256];
+    model.account_info_table_name = [NSString stringWithFormat:@"%@_%@", ACCOUNTS_TABLE,model.wallet_uid];
+//    [[WalletTableManager walletTable] addRecord: model];
+//    [[NSUserDefaults standardUserDefaults] setObject: model.wallet_uid  forKey:Current_wallet_uid];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    BBLoginViewController *vc = [[BBLoginViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
 }
 
 - (void)loginBtnDidClick:(UIButton *)sender{

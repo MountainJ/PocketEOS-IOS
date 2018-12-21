@@ -12,11 +12,23 @@
 typedef void (^RequestSuccessBlock)(id DAO, id data);
 typedef void (^RequestFailedBlock)(id DAO, NSError *error);
 
+
+typedef NS_ENUM(NSInteger,HostType)
+{
+      HostTypeGenerateAddress  = 1 ,
+      HostTypeGetAccountInfo,
+      HostTypeFreezeBalance
+};
+
 @interface BaseHttpsNetworkRequest : NSObject
 /**
  *  request manager(AF_3.0 new method)
  */
 @property(nonatomic, strong) AFHTTPSessionManager *networkingManager;
+
+@property(nonatomic, strong) AFHTTPSessionManager *tronNetworkingManager;
+
+@property (nonatomic,assign) HostType  hostType;
 
 /**
  *  Network request timeout
@@ -58,5 +70,9 @@ typedef void (^RequestFailedBlock)(id DAO, NSError *error);
  request Json 序列化 的 post 请求
  */
 - (void)postOuterDataSuccess:(RequestSuccessBlock)success failure:(RequestFailedBlock)failure;
+
+//生成账户
+- (void)postTronDataSuccess:(RequestSuccessBlock)success failure:(RequestFailedBlock)failure;
+
 
 @end
