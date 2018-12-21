@@ -100,11 +100,11 @@
     }
 }
 
-- (IBAction)changeToBlackBoxMode:(UIButton *)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(changeToBlackBoxMode)]) {
-        [self.delegate changeToBlackBoxMode];
-    }
-}
+//- (IBAction)changeToBlackBoxMode:(UIButton *)sender {
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(changeToBlackBoxMode)]) {
+//        [self.delegate changeToBlackBoxMode];
+//    }
+//}
 
 
 - (void)privacyPolicy{
